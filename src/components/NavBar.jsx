@@ -2,6 +2,7 @@ import logo from '../../src/logo.svg';
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import CartWidget from './CartWidget';
 
 const inicio = () => {
     alert('Sección Inicio')
@@ -49,7 +50,7 @@ function NavBar() {
                     </Nav>
                     <Nav className="nav navbar-nav navbar-right">
                         <Nav.Link onClick={usuario} href="#home">Usuario</Nav.Link>
-                        <Nav.Link onClick={carrito} href="#link">Carrito</Nav.Link>
+                        <Nav.Link onClick={carrito} href="#link"><CartWidget/></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
