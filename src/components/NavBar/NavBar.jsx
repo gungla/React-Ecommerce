@@ -1,8 +1,8 @@
-import logo from '../../src/logo.svg';
+import logo from '../../assets/logo/logo.svg';
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 
 const inicio = () => {
     alert('Sección Inicio')
@@ -39,7 +39,7 @@ function NavBar() {
                 <Navbar.Brand onClick={inicio} href="#inicio"><img className="App-logo" src={logo} width="50" height="50" alt="Brand"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-auto tipo">
                         <Nav.Link onClick={inicio} href="#inicio">Inicio</Nav.Link>
                         <Nav.Link onClick={link1} href="#link1">Link 1</Nav.Link>
                         <Nav.Link onClick={link2} href="#link2">Link 2</Nav.Link>
@@ -48,7 +48,7 @@ function NavBar() {
                         <Nav.Link onClick={link5} href="#link5">Link 5</Nav.Link>
                         <Nav.Link onClick={link6} href="#link6">Link 6</Nav.Link>
                     </Nav>
-                    <Nav className="nav navbar-nav navbar-right">
+                    <Nav className="nav navbar-nav navbar-right tipo">
                         <Nav.Link onClick={usuario} href="#home">Usuario</Nav.Link>
                         <Nav.Link onClick={carrito} href="#link"><CartWidget/></Nav.Link>
                     </Nav>
