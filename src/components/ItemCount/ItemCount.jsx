@@ -1,8 +1,9 @@
 import React, {useState} from "react"
 
-
+/*
+function ItemCount(stock, initial, onAdd) {
+*/
 function ItemCount(props) {
-
 
     const {stock, initial} = props;
     const [count, setCount] = useState(initial)
@@ -21,8 +22,8 @@ function ItemCount(props) {
 
     const addCart = () => { 
         alert("Cantidad seleccionada: " + count)
+        //onAdd(count)
     }
-
 
     return (
         <div>

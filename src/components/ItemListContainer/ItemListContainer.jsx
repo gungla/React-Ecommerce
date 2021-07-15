@@ -1,9 +1,9 @@
 import React from 'react'
+import Item from '../ItemList/ItemList';
 
 export default function ItemListContainer(props) {
 
 const {greeting, contenido} = props;
-
     return (
         <div>
             <div className="container">
@@ -15,9 +15,16 @@ const {greeting, contenido} = props;
                         <p>
                             {contenido}
                         </p>
+
+                        <Item/>
+
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+
+
+
