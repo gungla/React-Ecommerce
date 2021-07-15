@@ -1,11 +1,13 @@
 import React from 'react'
-import ItemList from '../ItemList/ItemList'
 
-function Item() {
+function Item( { item } ) {
     return (
-        <div>
-            <ItemList items={itemList} />
-        </div>
+        <li key={item.id}>
+            {item.title}
+            {item.description}
+            {item.precio}
+            <img src={item.pictureURL} width='100'  alt={item.title}/>
+        </li>
     )
 }
 
