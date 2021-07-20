@@ -3,7 +3,7 @@ import NavBar from './components/NavBar/NavBar';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
-import ItemDetail from './components/ItemDetail/ItemDetail';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 import React from "react"
 import Carousel from 'react-bootstrap/Carousel'
@@ -60,7 +60,7 @@ function App() {
       <ItemCount stock={5} initial={1}/>
       <ItemListContainer greeting="Soy un Item..." contenido="Contenido"/>
 
-      <ItemDetail/>
+      <ItemDetailContainer />
 
     </div>
   );

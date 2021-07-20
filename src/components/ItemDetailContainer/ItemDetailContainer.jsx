@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { Card, Col } from "react-bootstrap";
+import ItemDetail from '../ItemDetail/ItemDetail';
+import {Row, Container, Col} from "react-bootstrap";
 
 function ItemDetailContainer() {
 
@@ -58,7 +59,7 @@ function ItemDetailContainer() {
             if(status===200){
     
             setTimeout(()=>{
-                resuelto(items)
+                resuelto(items.filter(item => item.id === "1"))
             },3000)
             }else{
                 rechazado('rechazado')
@@ -73,34 +74,20 @@ function ItemDetailContainer() {
     .then((resp)=> setItemList(resp))    
     .catch(err=> { console.log('un error')})    
     }, [])
+
     console.log(items)
-
-
-
 
     return (
         <div>
-           <h1>Item Detail</h1>
-           {items.filter(item => item.id === "1").map(filteredItem => (
-                <Col className="spacing">    
-                    <Card key={filteredItem.id} className="card">
-                        <Card.Img variant="top" src={filteredItem.pictureURL} alt={filteredItem.title}/>
-                        <Card.Body>
-                            <Card.Title>
-                                {filteredItem.title}
-                            </Card.Title>
-                            <Card.Text className="espacios">
-                                {filteredItem.description}
-                            </Card.Text>
-                            <Card.Footer>
-                            <small className="text-muted">
-                                {filteredItem.price}  
-                            </small>
-                            </Card.Footer>
-                        </Card.Body>
-                    </Card>  
-                </Col>
-            ))}
+            <Col>
+                <Container>
+                    <Row>
+                        <Col>
+                            <ItemDetail items={items} />
+                        </Col>
+                    </Row>
+                </Container>
+            </Col>
         </div>
     )
 }
