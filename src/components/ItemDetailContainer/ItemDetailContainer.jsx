@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import ItemList from '../ItemList/ItemList';
-import {Row, Container, Col} from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
+function ItemDetailContainer() {
 
-export default function ItemListContainer(props) {
-
-
-    const [itemList, setItemList] = useState([])   
+    const [items, setItemList] = useState([])   
     
     
     useEffect(() => {
@@ -76,36 +73,36 @@ export default function ItemListContainer(props) {
     .then((resp)=> setItemList(resp))    
     .catch(err=> { console.log('un error')})    
     }, [])
-    console.log(itemList)
+    console.log(items)
 
 
 
-const {greeting, contenido} = props;
+
     return (
         <div>
-            <Col>
-                <Container>
-                    <Row>
-                        <Col xs={12} md={8}>
-                            <h4>
-                                {greeting}
-                            </h4>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <p>
-                                {contenido}
-                            </p>
-                        </Col>
-                        <Col>
-                            <ItemList itemList={itemList}/> 
-                        </Col>
-                    </Row>
-                </Container>
-            </Col>
+           <h1>Item Detail</h1>
+           {items.filter(item => item.id === "1").map(filteredItem => (
+                <Col className="spacing">    
+                    <Card key={filteredItem.id} className="card">
+                        <Card.Img variant="top" src={filteredItem.pictureURL} alt={filteredItem.title}/>
+                        <Card.Body>
+                            <Card.Title>
+                                {filteredItem.title}
+                            </Card.Title>
+                            <Card.Text className="espacios">
+                                {filteredItem.description}
+                            </Card.Text>
+                            <Card.Footer>
+                            <small className="text-muted">
+                                {filteredItem.price}  
+                            </small>
+                            </Card.Footer>
+                        </Card.Body>
+                    </Card>  
+                </Col>
+            ))}
         </div>
     )
 }
 
-
-
-
+export default ItemDetailContainer
