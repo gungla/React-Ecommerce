@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import ItemList from '../ItemList/ItemList';
 import {Row, Container, Col} from "react-bootstrap";
+import { useParams } from 'react-router-dom'
 
 
 export default function ItemListContainer(props) {
 
 
     const [itemList, setItemList] = useState([])   
+
+    const {categoryId} = useParams()
     
     
     useEffect(() => {
@@ -14,6 +17,7 @@ export default function ItemListContainer(props) {
         {
             id:'1', 
             title: 'Adidas', 
+            category: 'hombre',
             description: 'Championes Adidas', 
             price: '$ 3.290', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p1.jpg'
@@ -21,6 +25,7 @@ export default function ItemListContainer(props) {
         {
             id:'2', 
             title: 'Vans', 
+            category: 'hombre',
             description: 'Championes Vans', 
             price: '$ 3.490', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p2.jpg'
@@ -28,6 +33,7 @@ export default function ItemListContainer(props) {
         {
             id:'3', 
             title: 'Converse', 
+            category: 'ninos',
             description: 'Championes Converse', 
             price: '$ 4.890', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p3.jpg'
@@ -35,6 +41,7 @@ export default function ItemListContainer(props) {
         {
             id:'4', 
             title: 'Reebok', 
+            category: 'ninos',
             description: 'Championes Reebok', 
             price: '$ 4.990', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p4.jpg'
@@ -42,6 +49,7 @@ export default function ItemListContainer(props) {
         {
             id:'5', 
             title: 'Topper', 
+            category: 'mujer',
             description: 'Championes Topper', 
             price: '$ 4.990', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p5.jpg'
@@ -49,6 +57,7 @@ export default function ItemListContainer(props) {
         {
             id:'6', 
             title: 'Puma', 
+            category: 'mujer',
             description: 'Championes Puma', 
             price: '$ 4.990', 
             pictureURL: 'http://disva.com.uy/assets/gun/productos/p6.jpg'
@@ -72,10 +81,21 @@ export default function ItemListContainer(props) {
         const getPromiseTask=()=>{
             return task
         }
-        getPromiseTask()
-    .then((resp)=> setItemList(resp))    
-    .catch(err=> { console.log('un error')})    
-    }, [])
+
+
+        if(categoryId===undefined){
+            getPromiseTask()
+                .then((resp)=> setItemList(resp)) 
+                .catch(err=> { console.log('un error')}) 
+        }else{
+            getPromiseTask()
+                .then((resp)=> setItemList(items.filter(item => item.category===categoryId)))
+                .catch(err=> { console.log('un error')}) 
+        }
+
+
+   
+    }, [categoryId])
     console.log(itemList)
 
 

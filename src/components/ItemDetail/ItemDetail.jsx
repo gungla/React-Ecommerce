@@ -1,56 +1,44 @@
 import React from 'react'
-import { Row, Container, Col, Card, Button} from "react-bootstrap";
+import { Row, Container, Col, Card} from "react-bootstrap";
+import { useParams, NavLink } from 'react-router-dom'
+import ItemCount from '../ItemCount/ItemCount';
 
 function ItemDetail( {items} ) {
+
+    const {id} = useParams()
+
     return (
         <div>
            <h1>Item Detail</h1>
-           {items.filter(item => item.id === "1").map(filteredItem => (
- 
-
-
-                <Col className="spacing">  
-                    <Container>
-                        <Card key={filteredItem.id} className="card">
-                            <Row>
-                                <Col xs={6} md={4}>
-                                    <Card.Img variant="top" src={filteredItem.pictureURL} alt={filteredItem.title}/>
-                                </Col>
-                                <Col xs={12} md={8}>
-                                <Card.Body>
-                                    <Card.Title>
-                                        {filteredItem.title}
-                                    </Card.Title>
-                                    <Card.Text className="espacios">
-                                        {filteredItem.description}
-                                    </Card.Text>
-                                    <Card.Footer>
-                                    <small className="text-muted">
-                                        {filteredItem.price}  
-                                    </small>
-                                    </Card.Footer>
-                                    <Container>
-                                        <Row>
-                                            <Col xs={6} md={4}>
-                                                <Button variant="outline-warning" bsSize="small" className="boton">
-                                                    Volver
-                                                </Button>
-                                                </Col>
-                                                <Col xs={6} md={4}>
-                                                <Button variant="outline-dark" bsSize="small" className="boton">
-                                                    Comprar
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </Card.Body>
-                                </Col>
-                            </Row>
-                        </Card> 
-                    </Container>
-                </Col>
-
-
+           {items.filter(item => item.id === id).map(filteredItem => (
+            <Col className="spacing">
+                <Container>
+                    <Card key={filteredItem.id} className="card">
+                    <Row>
+                        <Col xs={12} md={4}>
+                            <Card.Img variant="top" src={filteredItem.pictureURL} alt={filteredItem.title}/>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <Card.Body>
+                                <Card.Title>
+                                    {filteredItem.title} [<small>Categoria: {filteredItem.category}</small>]
+                                </Card.Title>
+                                <Card.Text className="espacios">
+                                    {filteredItem.description}
+                                </Card.Text>
+                                <Card.Footer>
+                                <small className="text-muted">
+                                    {filteredItem.price}  
+                                </small>
+                                </Card.Footer>
+                                <ItemCount stock={5} initial={1}/>
+                                <NavLink className="boton" to='/'>Volver</NavLink>
+                            </Card.Body>
+                        </Col>
+                    </Row>
+                    </Card> 
+                </Container>
+            </Col>
             ))}
         </div>
     )

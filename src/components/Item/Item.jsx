@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Button, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 
 function Item( { item } ) {
     return (    
@@ -8,7 +9,7 @@ function Item( { item } ) {
                 <Card.Img variant="top" src={item.pictureURL} alt={item.title}/>
                 <Card.Body>
                     <Card.Title>
-                        {item.title}
+                        {item.title} [<small>Categoria: {item.category}</small>]
                     </Card.Title>
                     <Card.Text className="espacios">
                         {item.description}
@@ -18,9 +19,7 @@ function Item( { item } ) {
                         {item.price}  
                     </small>
                     </Card.Footer>
-                    <Button variant="outline-dark" bsSize="small" className="boton">
-                        Más información
-                    </Button>
+                    <NavLink className="boton" to={`/item/${item.id}`}>Ver detalles</NavLink>
                 </Card.Body>
             </Card>  
         </Col>
