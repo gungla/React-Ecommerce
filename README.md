@@ -49,7 +49,7 @@ Uso de React Router Dom para la navegación.
 
 Insert gif or link to demo
 
-![App Screenshot](https://github.com/gungla/ecommerce-react-glahn/demo-react.gif)
+![App Screenshot](https://github.com/gungla/ecommerce-react-glahn/blob/main/demo-react.gif)
 
   
 ## Autor
