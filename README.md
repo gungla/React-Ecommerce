@@ -6,7 +6,7 @@ SHOP es un e-commerce para la venta de championes.
 
 ## Características
 
-**NavBar:** Navegabilidad del sitio.
+**NavBar:** Navegabilidad del sitio con el icono del carrito de compras.
 
 **Catálogo de productos:** Lista todos los productos del sitio y sus características.
 
