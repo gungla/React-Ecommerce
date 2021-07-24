@@ -4,17 +4,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-image: linear-gradient(to top, #4facfe 0%, #00f2fe 100%);
+  background-image: linear-gradient(to top, #c8ecf0 0%, #c8ecf0 100%);
 }
 
 .App-logo {
   height: 28px;
-  width: 90px;
+  width: 99px;
   pointer-events: none;
 }
 
 .iconoCart{
   color: #fff;
+  font-size: 22px;;
   margin-top: -5px;;
   pointer-events: none;
 }
@@ -42,7 +43,7 @@ body {
 }
 
 .tipo{
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -86,12 +87,12 @@ body {
 
 .normal:hover{
   text-decoration: none;
-  color: yellow;
+  color: skyblue;
 }
 
 .active{
   text-decoration: none;
-  color: yellow;
+  color: skyblue;
 }
 
 .boton{
@@ -155,4 +156,35 @@ body {
 
 
 
+.carousel-caption {
+  top: 33%;
+}
 
+.titSeccion{
+  text-align: center;
+  color: black;
+  text-transform: uppercase;
+}
+
+.footer{
+  margin-top: 5rem;
+  padding: 1rem;
+  background-color: rgb(0, 0, 0, 0.6);
+  width: 100%;
+  color: white;
+  bottom: 0;
+  width: 100%;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+ }
+
+
+.load{
+  text-align: center;
+  font-size: 22px;
+  font-weight: bolder;
+  color: red;
+}

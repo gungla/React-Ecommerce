@@ -9,7 +9,11 @@ function ItemDetail( {items} ) {
 
     return (
         <div>
-           <h1>Item Detail</h1>
+           <Col xs={12} md={12}>
+                <h4 className="titSeccion">
+                    Detalle del producto
+                </h4>
+            </Col>
            {items.filter(item => item.id === id).map(filteredItem => (
             <Col className="spacing">
                 <Container>

@@ -10,7 +10,7 @@ function NavBar() {
         <div>
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Navbar.Brand>
-                    <NavLink to="/">
+                    <NavLink exact to="/">
                         <img className="App-logo" src={logo} width="50" height="50" alt="Brand"/>
                     </NavLink>
                 </Navbar.Brand>
@@ -18,24 +18,22 @@ function NavBar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto tipo">
                         <Nav.Link>
-                            <NavLink activeClassName="active" className="normal" to="/">Inicio</NavLink>
+                            <NavLink exact activeClassName="active" className="normal" to="/">Inicio</NavLink>
                         </Nav.Link>
                         <Nav.Link>
-                            <NavLink activeClassName="active" className="normal" to="/category/hombre">Hombre</NavLink>
+                            <NavLink exact activeClassName="active" className="normal" to="/category/hombre">Hombre</NavLink>
                         </Nav.Link>
                         <Nav.Link>
-                            <NavLink activeClassName="active" className="normal" to="/category/mujer">Mujer</NavLink>
+                            <NavLink exact activeClassName="active" className="normal" to="/category/mujer">Mujer</NavLink>
                         </Nav.Link>
                         <Nav.Link>
-                            <NavLink className="normal" to="/category/ninos">Niños</NavLink>
+                            <NavLink exact className="normal" to="/category/ninos">Niños</NavLink>
                         </Nav.Link>
                     </Nav>
                     <Nav className="nav navbar-nav navbar-right tipo">
-                        
-                            <NavLink className="normal" to="/cart">
-                                <CartWidget/>
-                            </NavLink>
-                       
+                        <NavLink exact className="normal" to="/cart">
+                            <CartWidget/>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

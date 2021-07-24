@@ -12,7 +12,7 @@ function SlideHome() {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>SLIDE 1</h3>
+                <h1>SLIDE 1</h1>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </Carousel.Caption>
             </Carousel.Item>
@@ -23,7 +23,7 @@ function SlideHome() {
                 alt="Second slide"
               />
               <Carousel.Caption>
-                <h3>SLIDE 2</h3>
+                <h1>SLIDE 2</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </Carousel.Caption>
             </Carousel.Item>
@@ -34,7 +34,7 @@ function SlideHome() {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>SLIDE 3</h3>
+                <h1>SLIDE 3</h1>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
               </Carousel.Caption>
             </Carousel.Item>
