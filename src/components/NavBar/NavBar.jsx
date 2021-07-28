@@ -17,18 +17,10 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto tipo">
-                        <Nav.Link>
-                            <NavLink exact activeClassName="active" className="normal" to="/">Inicio</NavLink>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <NavLink exact activeClassName="active" className="normal" to="/category/hombre">Hombre</NavLink>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <NavLink exact activeClassName="active" className="normal" to="/category/mujer">Mujer</NavLink>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <NavLink exact className="normal" to="/category/ninos">Niños</NavLink>
-                        </Nav.Link>
+                        <NavLink exact activeClassName="active" className="normal" to="/">Inicio</NavLink>
+                        <NavLink exact activeClassName="active" className="normal" to="/category/hombre">Hombre</NavLink>
+                        <NavLink exact activeClassName="active" className="normal" to="/category/mujer">Mujer</NavLink>
+                        <NavLink exact className="normal" to="/category/ninos">Niños</NavLink>
                     </Nav>
                     <Nav className="nav navbar-nav navbar-right tipo">
                         <NavLink exact className="normal" to="/cart">

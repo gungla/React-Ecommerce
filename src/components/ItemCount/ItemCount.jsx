@@ -19,7 +19,7 @@ function ItemCount(props) {
         }
     }
 
-    const [pulsado, setPulsado] = useState(true);
+    const [pulsado, setPulsado] = useState(false);
 
     const handleAdd = () => { 
         //alert("Cantidad seleccionada: " + count);
@@ -43,9 +43,9 @@ function ItemCount(props) {
                         {count}
                         <button onClick={addItem} disabled={count === stock}>+</button>
                         {pulsado ? (
-                            <Componente1 />
-                        ) : (
                             <Link className="boton" exact to="/cart">Terminar compra</Link>
+                        ) : (
+                            <Componente1 />
                         )}
                         <br></br>Stock disnpoible: {stock - count}
                     </div>

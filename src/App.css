@@ -83,6 +83,7 @@ body {
 .normal{
   text-decoration: none;
   color: white;
+  margin-right: 25px;
 }
 
 .normal:hover{
@@ -95,7 +96,7 @@ body {
   color: skyblue;
 }
 
-.boton{
+.boton, .boton2{
   position: relative;
 	display: block;
 	padding: 15px 10px;
@@ -112,8 +113,8 @@ body {
 	background:black;
 }
 
-.boton:after,
-.boton:before{
+.boton:after, .boton2:after,
+.boton:before, .boton2:before{
 	width: 80px;
 	height: 200px;
 	content: '';
@@ -127,7 +128,7 @@ body {
 	cursor: pointer;
 }
  
-.boton:before{
+.boton:before, .boton2:before{
 	left: -48%;
 }
  
@@ -137,19 +138,26 @@ body {
   text-decoration:none;
   color:white;
 }
+
+.boton2:hover{
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	background:red;
+  text-decoration:none;
+  color:white;
+}
  
-.boton:hover:after,
-.boton:hover:before{
+.boton:hover:after, .boton2:hover:after,
+.boton:hover:before, .boton2:hover:before{
 	transform: rotate(45deg), scaleX(130%);
 	background: rgba(255,255,255,0.1);
 	transition: all ease 0.5s;
 }
  
-.boton:hover:after{
+.boton:hover:after, .boton2:hover:after{
 	right: 130%;
 }
  
-.boton:hover:before{
+.boton:hover:before, .boton2:hover:before{
 	left: 130%;
 }
 

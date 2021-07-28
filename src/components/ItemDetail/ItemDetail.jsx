@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Row, Container, Col, Card} from "react-bootstrap";
-import { useParams } from 'react-router-dom'
+//import { useParams } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount';
 
 
@@ -10,8 +10,6 @@ import ItemCount from '../ItemCount/ItemCount';
 
 //function ItemDetail( {items={}} ) {
 function ItemDetail( {items} ) {
-
-    const {id} = useParams()
     
     const [count, setCount] = useState()
 
@@ -29,10 +27,10 @@ function ItemDetail( {items} ) {
                     Detalle del producto
                 </h4>
             </Col>
-           {items.filter(item => item.id === id).map(filteredItem => (
-            <Col className="spacing">
+            {items.map(filteredItem => ( 
+            <Col className="spacing" key={filteredItem.id}>
                 <Container>
-                    <Card key={filteredItem.id} className="card">
+                    <Card className="card">
                     <Row>
                         <Col xs={12} md={4}>
                             <Card.Img variant="top" src={filteredItem.pictureURL} alt={filteredItem.title}/>
