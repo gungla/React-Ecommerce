@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
 import {Row, Container, Col} from "react-bootstrap";
-import { useParams } from 'react-router-dom'
+import { useParams  } from 'react-router-dom'
 import data from '../../data/data'
 
 function ItemDetailContainer() {
@@ -22,6 +22,17 @@ function ItemDetailContainer() {
             setTimeout(()=>{
                 setLoading(false);
                 resuelto(data.filter(item => item.id === id))
+
+                if(id===undefined){
+                    getPromiseTask()
+                        .then((resp)=> setItemList(resp)) 
+                        .catch(err=> { console.log('un error')}) 
+                }else{
+                    getPromiseTask()
+                        .then((resp) => setItemList(resp))
+                        .catch(err=> { console.log('un error')}) 
+                }
+
             },2000)
             }else{
                 rechazado('rechazado')
@@ -33,20 +44,10 @@ function ItemDetailContainer() {
             return task
         }
         
-       
-        if(id===undefined){
-            getPromiseTask()
-                .then((resp)=> setItemList(resp)) 
-                .catch(err=> { console.log('un error')}) 
-        }else{
-            getPromiseTask()
-                .then((resp) => setItemList(resp))
-                .catch(err=> { console.log('un error')}) 
-        }
 
     }, [id])
 
-    console.log(data)
+    //console.log(data)
 
     return (
         <div>
@@ -57,7 +58,9 @@ function ItemDetailContainer() {
                             <h1 className="load"> 
                                 {loading && "Cargando..."}
                             </h1>
-                            {!loading && <ItemDetail items={items} /> }
+                            {!loading && 
+                                <ItemDetail items={items} />   
+                            }
                         </Col>
                     </Row>
                 </Container>

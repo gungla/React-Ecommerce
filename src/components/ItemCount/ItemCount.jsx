@@ -1,10 +1,10 @@
 import React, {useState} from "react"
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 function ItemCount(props) {
 
-    const {stock, initial} = props;
+    const {stock, initial, onAdd} = props;
     const [count, setCount] = useState(initial)
 
     const addItem = () => { 
@@ -21,14 +21,15 @@ function ItemCount(props) {
 
     const [pulsado, setPulsado] = useState(true);
 
-    const onAdd = () => { 
+    const handleAdd = () => { 
         //alert("Cantidad seleccionada: " + count);
+        onAdd()
         setPulsado(!pulsado)
     }
 
     //onAdd(count)
     const Componente1 = () => (
-        <button className="boton" onClick={onAdd}>Añadir al carrito</button>
+        <button className="boton" onClick={handleAdd}>Añadir al carrito</button>
     );
 
     console.log(count);
@@ -41,11 +42,10 @@ function ItemCount(props) {
                         <button onClick={removeItem} disabled={count === initial}>-</button>
                         {count}
                         <button onClick={addItem} disabled={count === stock}>+</button>
-                        {/*<button onClick={addCart}>Añadir al carrito</button>*/}
                         {pulsado ? (
                             <Componente1 />
                         ) : (
-                            <NavLink className="boton" exact to="/cart">Terminar compra</NavLink>
+                            <Link className="boton" exact to="/cart">Terminar compra</Link>
                         )}
                         <br></br>Stock disnpoible: {stock - count}
                     </div>
