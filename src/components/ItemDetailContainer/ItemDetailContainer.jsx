@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
-import {Row, Container, Col} from "react-bootstrap";
+import {Row, Container, Col, Spinner} from "react-bootstrap";
 import { useParams  } from 'react-router-dom'
 import data from '../../data/data'
+import {useCartContext} from '../../Context/CartContext'
 
 function ItemDetailContainer() {
 
@@ -11,6 +12,8 @@ function ItemDetailContainer() {
     const [loading, setLoading] = useState(true)   
 
     const {id} = useParams()
+
+    const { addProduct } = useCartContext();
     
     useEffect(() => {
         setLoading(true);
@@ -56,10 +59,10 @@ function ItemDetailContainer() {
                     <Row>
                         <Col>
                             <h1 className="load"> 
-                                {loading && "Cargando..."}
+                                {loading && <Spinner animation="grow" />}
                             </h1>
                             {!loading && 
-                                <ItemDetail items={items} />   
+                                <ItemDetail items={items} addProduct={addProduct} />   
                             }
                         </Col>
                     </Row>

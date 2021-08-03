@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import { Row, Container, Col, Card} from "react-bootstrap";
+import { Row, Container, Col, Card, Spinner} from "react-bootstrap";
+//import { useCartContext } from "../../Context/CartContext";
+//import Item from '../Item/Item'
 
 function Cart() {
 
+    //const { product } = useCartContext();
     const [loading, setLoading] = useState(0) 
 
     useEffect(() => {
@@ -17,12 +20,12 @@ function Cart() {
             <Col className="spacing">
                 <Container>
                 <h1 className="load">   
-                    {loading && "Cargando..."}
+                    {loading && <Spinner animation="grow" />}
                 </h1> 
                 {!loading && 
                 <Card className="card">
                     <Row>
-                        <Col>
+                        <Col>   
                             <Card.Body>
                                 <Card.Title>
                                     CARRITO

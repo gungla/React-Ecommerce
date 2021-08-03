@@ -8,28 +8,31 @@ import SlideHome from './components/SlideHome/SlideHome'
 import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {CartContextProvider} from './Context/CartContext';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-          <NavBar/>
-          <SlideHome/>
-          <Switch>
-            <Route exact path='/'>
-              <ItemListContainer greeting="Catálogo de Produtos"/>
-            </Route>
-            <Route exact path='/cart'>
-              <Cart/>
-            </Route>
-            <Route exact path='/category/:categoryId'>
-              <ItemListContainer greeting="Catálogo de Produtos"/>
-            </Route>
-            <Route exact path='/item/:id' component={ItemDetailContainer}/>
-          </Switch>
-          <Footer/>
-      </div>
-    </Router>
+    <CartContextProvider>
+      <Router>
+        <div className="App">
+            <NavBar/>
+            <SlideHome/>
+            <Switch>
+              <Route exact path='/'>
+                <ItemListContainer greeting="Catálogo de Produtos"/>
+              </Route>
+              <Route exact path='/cart'>
+                <Cart/>
+              </Route>
+              <Route exact path='/category/:categoryId'>
+                <ItemListContainer greeting="Catálogo de Produtos"/>
+              </Route>
+              <Route exact path='/item/:id' component={ItemDetailContainer}/>
+            </Switch>
+            <Footer/>
+        </div>
+      </Router>
+    </CartContextProvider>
   );
 }
 

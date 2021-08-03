@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ItemList from '../ItemList/ItemList';
-import {Row, Container, Col} from "react-bootstrap";
+import {Row, Container, Col, Spinner} from "react-bootstrap";
 import { useParams } from 'react-router-dom'
 import data from '../../data/data'
 
@@ -14,7 +14,6 @@ export default function ItemListContainer(props) {
 
     const {categoryId} = useParams()
     
-    
     useEffect(() => {
         setLoading(true);
         
@@ -25,6 +24,17 @@ export default function ItemListContainer(props) {
             setTimeout(()=>{
                 setLoading(false);
                 resuelto(data)
+
+                if(categoryId===undefined){
+                    getPromiseTask()
+                        .then((resp)=> setItemList(resp)) 
+                        .catch(err=> { console.log('un error')}) 
+                }else{
+                    getPromiseTask()
+                        .then((resp)=> setItemList(data.filter(item => item.category===categoryId)))
+                        .catch(err=> { console.log('un error')}) 
+                }
+
             },2000)
             }else{
                 rechazado('rechazado')
@@ -35,22 +45,9 @@ export default function ItemListContainer(props) {
         const getPromiseTask=()=>{
             return task
         }
-
-
-        if(categoryId===undefined){
-            getPromiseTask()
-                .then((resp)=> setItemList(resp)) 
-                .catch(err=> { console.log('un error')}) 
-        }else{
-            getPromiseTask()
-                .then((resp)=> setItemList(data.filter(item => item.category===categoryId)))
-                .catch(err=> { console.log('un error')}) 
-        }
-
-
    
     }, [categoryId])
-    console.log(itemList)
+    //console.log(itemList)
 
 
 
@@ -67,7 +64,7 @@ const {greeting} = props;
                         </Col>
                         <Col>
                             <h1 className="load"> 
-                                {loading && "Cargando..."}
+                                {loading && <Spinner animation="grow" />}
                             </h1>
                             {!loading && <ItemList itemList={itemList}/> }
                         </Col>

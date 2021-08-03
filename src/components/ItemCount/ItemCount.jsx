@@ -19,12 +19,11 @@ function ItemCount(props) {
         }
     }
 
-    const [pulsado, setPulsado] = useState(false);
+    const [pulsado, setPulsado] = useState(false); 
 
     const handleAdd = () => { 
-        //alert("Cantidad seleccionada: " + count);
-        onAdd()
-        setPulsado(!pulsado)
+        onAdd(count)
+        setPulsado(true)
     }
 
     //onAdd(count)
@@ -32,7 +31,7 @@ function ItemCount(props) {
         <button className="boton" onClick={handleAdd}>Añadir al carrito</button>
     );
 
-    console.log(count);
+    //console.log(count);
 
     return (
         <div>
@@ -43,7 +42,7 @@ function ItemCount(props) {
                         {count}
                         <button onClick={addItem} disabled={count === stock}>+</button>
                         {pulsado ? (
-                            <Link className="boton" exact to="/cart">Terminar compra</Link>
+                            <Link className="boton" to="/cart">Terminar compra</Link>
                         ) : (
                             <Componente1 />
                         )}
