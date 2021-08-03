@@ -9,7 +9,7 @@ export const CartContextProvider = ({ children }) => {
 const [product, setProducts] = useState([]);
 
 const addProduct = (item, quantity) => {
-    const index = product.findIndex(i => i.id === item.id) //trata de no usar los mismos nombres de variables para no marearte
+  const index = product.findIndex(i => i.item.id === item.id)
     if (index > -1) {
       const oldQy = product[index].quantity
       product.splice(index, 1)
