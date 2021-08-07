@@ -38,9 +38,13 @@ function ItemCount(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12">
-                        <button onClick={removeItem} disabled={count === initial}>-</button>
-                        {count}
-                        <button onClick={addItem} disabled={count === stock}>+</button>
+
+                        <div className="button-container">
+                            <button className="cart-qty-minus" onClick={removeItem} disabled={count === initial}>-</button>
+                                <span className="qty form-control">{count}</span>
+                            <button className="cart-qty-plus" onClick={addItem} disabled={count === stock}>+</button>
+                        </div>
+
                         {pulsado ? (
                             <Link className="boton" to="/cart">Terminar compra</Link>
                         ) : (

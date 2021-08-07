@@ -19,7 +19,7 @@ function Item( { item } ) {
                         {item.price}  
                     </small>
                     </Card.Footer>
-                    <NavLink className="boton" to={`/item/${item.id}`}>Ver detalles</NavLink>
+                    <NavLink className="boton" exact to={`/item/${item.id}`}>Ver detalles</NavLink>
                 </Card.Body>
             </Card>  
         </Col>

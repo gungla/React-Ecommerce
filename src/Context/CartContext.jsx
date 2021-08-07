@@ -19,13 +19,42 @@ const addProduct = (item, quantity) => {
       setProducts([...product, {item, quantity}])
     }
 }
-console.log(product);
+
+const deleteFromCart = (item) => {
+  //Verificamos si esta en el carrito
+  const productIsInCart = isInCart(item.item.id);
+  if (!productIsInCart) {
+    console.log("EL PRODUCTO NO ESTA EN EL CARRITO");
+    return;
+  }
+  const deleteProduct = product.filter((prod) => prod.item.id !== item.item.id);
+  setProducts([...deleteProduct]);
+};
+
+const isInCart = (id) => product.find((prod) => prod.item.id === id);
+
+const precioTotal =(id)=>{
+  return product.reduce((acum, valor)=>(acum + (valor.quantity * valor.item.price)), 0) 
+}
+
+const iconCart =()=>{
+  return product.reduce((acum, valor)=> acum + valor.quantity, 0) 
+}
+
+const clearCart = () => setProducts([]);
+
+
   
   return (
     <CartContext.Provider
       value={{
         product,
-        addProduct
+        addProduct,
+        setProducts,
+        clearCart,
+        deleteFromCart,
+        precioTotal,
+        iconCart,
       }}
     >
       {children}

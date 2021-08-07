@@ -4,6 +4,7 @@ import {Row, Container, Col, Spinner} from "react-bootstrap";
 import { useParams  } from 'react-router-dom'
 import data from '../../data/data'
 import {useCartContext} from '../../Context/CartContext'
+//import {getFireStore} from  '../../data/firebaseService'
 
 function ItemDetailContainer() {
 
@@ -24,6 +25,12 @@ function ItemDetailContainer() {
             if(status===200){
             setTimeout(()=>{
                 setLoading(false);
+                
+
+                //const dbQuery = getFireStore()
+                //dbQuery.collection('items').get()
+                //.then(resp => setItem(resp.docs.map(ite => ({...ite.data(), id: ite.id }))))
+
                 resuelto(data.filter(item => item.id === id))
 
                 if(id===undefined){

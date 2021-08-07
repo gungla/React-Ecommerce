@@ -4,7 +4,7 @@ const data=[
         title: 'Adidas', 
         category: 'hombre',
         description: 'Championes Adidas', 
-        price: '$ 3.290', 
+        price: 3290, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p1.jpg'
     },
     {
@@ -12,7 +12,7 @@ const data=[
         title: 'Vans', 
         category: 'hombre',
         description: 'Championes Vans', 
-        price: '$ 3.490', 
+        price: 3490, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p2.jpg'
     },
     {
@@ -20,7 +20,7 @@ const data=[
         title: 'Converse', 
         category: 'ninos',
         description: 'Championes Converse', 
-        price: '$ 4.890', 
+        price: 4890, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p3.jpg'
     },
     {
@@ -28,7 +28,7 @@ const data=[
         title: 'Reebok', 
         category: 'ninos',
         description: 'Championes Reebok', 
-        price: '$ 4.990', 
+        price: 4990, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p4.jpg'
     },
     {
@@ -36,7 +36,7 @@ const data=[
         title: 'Topper', 
         category: 'mujer',
         description: 'Championes Topper', 
-        price: '$ 4.990', 
+        price: 4990, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p5.jpg'
     },
     {
@@ -44,7 +44,7 @@ const data=[
         title: 'Puma', 
         category: 'mujer',
         description: 'Championes Puma', 
-        price: '$ 4.990', 
+        price: 4990, 
         pictureURL: 'http://disva.com.uy/assets/gun/productos/p6.jpg'
     }
 ]   
