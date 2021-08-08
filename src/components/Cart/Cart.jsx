@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Col, Card, Spinner, Table} from "react-bootstrap";
+import { Container, Col, Card, Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../Context/CartContext";
 
@@ -23,94 +23,83 @@ function Cart() {
         <Container className="card">
           <h1 className="load">{loading && <Spinner animation="grow" />}</h1>
 
-          {!loading && product.length !== 0 && (  
-              <Card className="card">      
+          {!loading && product.length !== 0 && (
             <Table striped bordered hover size="sm">
-                <thead>
-                    <tr>
-                        <th>
-                            Detalle del carrito 
-                        </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>
-                            <button className="btn btn-danger" onClick={clearCart}>Limpiar carrito</button>
-                        </th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Borrar</th>
-                    </tr>
-                </thead>
-            </Table> 
-            </Card> 
+              <thead>
+                <tr>
+                  <th>Detalle del carrito</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>
+                    <button className="btn btn-danger" onClick={clearCart}>
+                      Limpiar carrito
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Borrar</th>
+                </tr>
+              </thead>
+              {product.map((item) => (
+                <tbody key={item.item.id}> 
+                  <tr>
+                    <td>
+                      <img
+                        variant="top"
+                        src={item.item.pictureURL}
+                        alt={item.item.title}
+                        className="imgCart"
+                      />
+                    </td>
+                    <td>{item.item.title}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.quantity * item.item.price}</td>
+                    <td>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => deleteFromCart(item)}
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+            </Table>
           )}
 
           {!loading && product.length !== 0 && (
             <Card className="card">
-                {product.map((item) => (
-                    <Table striped bordered hover size="sm" key={item.item.id}>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <img
-                                    variant="top"
-                                    src={item.item.pictureURL}
-                                    alt={item.item.title}
-                                    className="imgCart"
-                                    />
-                                </td>
-                                <td>{item.item.title}</td>
-                                <td>
-                                    {item.quantity}
-                                </td>
-                                <td>
-                                    {item.quantity * item.item.price}
-                                </td>
-                                <td>
-                                    <button  className="btn btn-primary" onClick={() => deleteFromCart(item)}>X</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                ) 
-                )}
+              <Card.Body>
+                <Card.Footer>
+                  <small className="text-muted aca">
+                    Precio Total $ {precioTotal()}
+                  </small>
+                </Card.Footer>
+              </Card.Body>
             </Card>
-          )}
-
-          {!loading && product.length !== 0 && (
-            <Card className="card"> 
-                <Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted aca">
-                        Precio Total $ {precioTotal()} 
-                    </small>
-                    </Card.Footer>
-                </Card.Body>
-            </Card>  
           )}
 
           {!loading && product.length === 0 && (
             <Card className="card">
-                <Card.Body>
-                <Card.Title>
-                    No hay productos en el carrito
-                </Card.Title>
+              <Card.Body>
+                <Card.Title>No hay productos en el carrito</Card.Title>
                 <Card.Footer>
-                    <small className="text-muted">
-                        <Link className="boton" to="/">
-                            Continuar comprando
-                        </Link> 
-                    </small>
+                  <small className="text-muted">
+                    <Link className="boton" to="/">
+                      Continuar comprando
+                    </Link>
+                  </small>
                 </Card.Footer>
-                </Card.Body>
-          </Card> 
+              </Card.Body>
+            </Card>
           )}
         </Container>
       </Col>

@@ -2,62 +2,33 @@ import React, {useEffect, useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
 import {Row, Container, Col, Spinner} from "react-bootstrap";
 import { useParams  } from 'react-router-dom'
-import data from '../../data/data'
+//import data from '../../data/data'
 import {useCartContext} from '../../Context/CartContext'
-//import {getFireStore} from  '../../data/firebaseService'
+import {getFireStore} from  '../../data/firebaseService'
 
 function ItemDetailContainer() {
 
-    const [items, setItemList] = useState([])   
-
-    const [loading, setLoading] = useState(true)   
-
+    const [loading, setLoading] = useState(true)
+    const [items, setItemList] = useState([])      
     const {id} = useParams()
-
     const { addProduct } = useCartContext();
-    
+
     useEffect(() => {
-        setLoading(true);
-        
-        const task = new Promise((resuelto, rechazado)=>{
-            //console.log('promesa')
-            let status=200
-            if(status===200){
-            setTimeout(()=>{
-                setLoading(false);
-                
+        setLoading(true)
+        const db = getFireStore()
+        const getItem = db.collection("items").doc(id)
 
-                //const dbQuery = getFireStore()
-                //dbQuery.collection('items').get()
-                //.then(resp => setItem(resp.docs.map(ite => ({...ite.data(), id: ite.id }))))
-
-                resuelto(data.filter(item => item.id === id))
-
-                if(id===undefined){
-                    getPromiseTask()
-                        .then((resp)=> setItemList(resp)) 
-                        .catch(err=> { console.log('un error')}) 
-                }else{
-                    getPromiseTask()
-                        .then((resp) => setItemList(resp))
-                        .catch(err=> { console.log('un error')}) 
-                }
-
-            },2000)
-            }else{
-                rechazado('rechazado')
-            }
-    
-    
+        getItem.get().then((querySnapshot) => {
+            setItemList({id:querySnapshot.id, ...querySnapshot.data()})
         })
-        const getPromiseTask=()=>{
-            return task
-        }
+        .catch((e) => {console.log(e)})
+        .finally(()=>{
+            setLoading(false)  
+        })
         
+    },[id])
 
-    }, [id])
-
-    //console.log(data)
+  
 
     return (
         <div>
@@ -65,7 +36,7 @@ function ItemDetailContainer() {
                 <Container>
                     <Row>
                         <Col>
-                            <h1 className="load"> 
+                        <h1 className="load"> 
                                 {loading && <Spinner animation="grow" />}
                             </h1>
                             {!loading && 

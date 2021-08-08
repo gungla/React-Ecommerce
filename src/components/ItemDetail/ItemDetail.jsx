@@ -11,7 +11,7 @@ function ItemDetail({ items, addProduct }) {
   function onAdd(itemCount) {
     setCount(itemCount);
     //alert(itemCount);
-    addProduct(items[0], itemCount)
+    addProduct(items, itemCount)
     //alert('onAdd');
   }
   console.log(count);
@@ -21,29 +21,29 @@ function ItemDetail({ items, addProduct }) {
       <Col xs={12} md={12}>
         <h4 className="titSeccion">Detalle del producto</h4>
       </Col>
-      {items.map((listar) => (
-        <Col className="spacing" key={listar.id}>
+      
+        <Col className="spacing" key={items.id}>
           <Container>
             <Card className="card">
               <Row>
                 <Col xs={12} md={4}>
                   <Card.Img
                     variant="top"
-                    src={listar.pictureURL}
-                    alt={listar.title}
+                    src={items.pictureURL}
+                    alt={items.title}
                   />
                 </Col>
                 <Col xs={12} md={8}>
                   <Card.Body>
                     <Card.Title>
-                      {listar.title} [
-                      <small>Categoria: {listar.category}</small>]
+                      {items.title} [
+                      <small>Categoria: {items.category}</small>]
                     </Card.Title>
                     <Card.Text className="espacios">
-                      {listar.description}
+                      {items.description}
                     </Card.Text>
                     <Card.Footer>
-                      <small className="text-muted">{listar.price}</small>
+                      <small className="text-muted">{items.price}</small>
                     </Card.Footer>
                     <ItemCount onAdd={onAdd} stock={5} initial={1} />
                   </Card.Body>
@@ -52,7 +52,7 @@ function ItemDetail({ items, addProduct }) {
             </Card>
           </Container>
         </Col>
-      ))}
+      
     </div>
   );
 }

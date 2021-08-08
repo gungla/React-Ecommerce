@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/firestore";
 
 const firebaseConfig = {
@@ -18,5 +18,5 @@ export function getFirebase(){
 }
 
 export function getFireStore(){
-    return firebase.firestore()
+    return firebase.firestore(app)
 }
