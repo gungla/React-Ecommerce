@@ -44,6 +44,8 @@ Uso de Bootstrap para dar formato a la aplicación.
 
 Uso de React Router Dom para la navegación.
 
+Uso de Firestore para la base de datos.
+
   
 ## Demostración en funcionamiento
 

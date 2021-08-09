@@ -5,9 +5,6 @@ import { useCartContext } from "../../Context/CartContext";
 
 function Cart() {
   const { product, clearCart, deleteFromCart, precioTotal } = useCartContext();
-  //console.log(product);
-  //console.log(precioProductoUnicoTotal())
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

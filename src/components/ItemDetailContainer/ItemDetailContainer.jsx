@@ -28,8 +28,6 @@ function ItemDetailContainer() {
         
     },[id])
 
-  
-
     return (
         <div>
             <Col>
