@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import ItemList from '../ItemList/ItemList';
-import {Row, Container, Col, Spinner} from "react-bootstrap";
+import {Row, Container, Col} from "react-bootstrap";
 import { useParams } from 'react-router-dom'
+import { Loading } from "../Loading/Loading";
 import {getFireStore} from  '../../data/firebaseService'
 
 
@@ -48,12 +49,8 @@ const {greeting} = props;
                             </h4>
                         </Col>
                         <Col>
-                            <h1 className="load"> 
-                                {loading && <Spinner animation="grow" />}
-                            </h1>
-                            {!loading && 
-                            <ItemList itemList={itemList}/>
-                            }
+                            {loading && <Loading />}
+                            {!loading && <ItemList itemList={itemList}/>}
                         </Col>
                     </Row>
                 </Container>

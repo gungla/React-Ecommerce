@@ -1,0 +1,23 @@
+.App-logo {
+    height: 28px;
+    width: 99px;
+    pointer-events: none;
+}
+.tipo{
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.normal{
+    text-decoration: none;
+    color: white;
+    margin-right: 25px;
+}
+.normal:hover{
+    text-decoration: none;
+    color: skyblue;
+}
+.active{
+    text-decoration: none;
+    color: skyblue;
+}

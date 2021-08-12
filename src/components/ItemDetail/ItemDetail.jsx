@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Row, Container, Col, Card } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
-//import { useCartContext } from "../../Context/CartContext";
+import './ItemDetail.css'
 
-//function ItemDetail( {items={}} ) {
 function ItemDetail({ items, addProduct }) {
 
   const [count, setCount] = useState();
 
   function onAdd(itemCount) {
     setCount(itemCount);
-    //alert(itemCount);
     addProduct(items, itemCount)
-    //alert('onAdd');
   }
   console.log(count);
 
@@ -36,14 +33,13 @@ function ItemDetail({ items, addProduct }) {
                 <Col xs={12} md={8}>
                   <Card.Body>
                     <Card.Title>
-                      {items.title} [
-                      <small>Categoria: {items.category}</small>]
+                      {items.title}
                     </Card.Title>
                     <Card.Text className="espacios">
                       {items.description}
                     </Card.Text>
                     <Card.Footer>
-                      <small className="text-muted">{items.price}</small>
+                      <small className="text-muted"> $ {items.price}</small>
                     </Card.Footer>
                     <ItemCount onAdd={onAdd} stock={5} initial={1} />
                   </Card.Body>

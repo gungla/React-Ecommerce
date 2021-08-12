@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import CartWidget from '../CartWidget/CartWidget';
 import { NavLink } from 'react-router-dom'
 import {getFireStore} from  '../../data/firebaseService'
+import './NavBar.css'
 
 function NavBar() {
 

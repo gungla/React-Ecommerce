@@ -43,8 +43,6 @@ const iconCart =()=>{
 
 const clearCart = () => setProducts([]);
 
-
-  
   return (
     <CartContext.Provider
       value={{

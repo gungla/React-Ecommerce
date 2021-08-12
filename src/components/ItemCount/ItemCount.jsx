@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import { Link } from 'react-router-dom'
+import './ItemCount.css'
 
 
 function ItemCount(props) {
@@ -25,13 +26,10 @@ function ItemCount(props) {
         onAdd(count)
         setPulsado(true)
     }
-
-    //onAdd(count)
+    
     const Componente1 = () => (
         <button className="boton" onClick={handleAdd}>Añadir al carrito</button>
     );
-
-    //console.log(count);
 
     return (
         <div>
@@ -44,13 +42,12 @@ function ItemCount(props) {
                                 <span className="qty form-control">{count}</span>
                             <button className="cart-qty-plus" onClick={addItem} disabled={count === stock}>+</button>
                         </div>
-
                         {pulsado ? (
                             <Link className="boton" to="/cart">Terminar compra</Link>
                         ) : (
                             <Componente1 />
                         )}
-                        <br></br>Stock disnpoible: {stock - count}
+                        Stock disnpoible: {stock - count}
                     </div>
                 </div>
             </div>

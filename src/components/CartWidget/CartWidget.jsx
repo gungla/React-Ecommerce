@@ -1,10 +1,10 @@
 import { BsBag } from "react-icons/bs";
 import React from 'react'
+import './CartWidget.css'
 import { useCartContext } from "../../Context/CartContext";
 
 export default function CartWidget() {
     const {iconCart} = useCartContext();
-    console.log(iconCart())
 
     return (
         <div>

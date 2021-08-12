@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
-import {Row, Container, Col, Spinner} from "react-bootstrap";
+import {Row, Container, Col} from "react-bootstrap";
 import { useParams  } from 'react-router-dom'
-//import data from '../../data/data'
+import { Loading } from "../Loading/Loading";
 import {useCartContext} from '../../Context/CartContext'
 import {getFireStore} from  '../../data/firebaseService'
 
@@ -34,12 +34,8 @@ function ItemDetailContainer() {
                 <Container>
                     <Row>
                         <Col>
-                        <h1 className="load"> 
-                                {loading && <Spinner animation="grow" />}
-                            </h1>
-                            {!loading && 
-                                <ItemDetail items={items} addProduct={addProduct} />   
-                            }
+                            {loading && <Loading />}
+                            {!loading && <ItemDetail items={items} addProduct={addProduct} />}
                         </Col>
                     </Row>
                 </Container>
