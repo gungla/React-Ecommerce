@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Container, Col, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
-import './Cart.css'
 import {useCartContext} from '../../Context/CartContext'
 import FormularioOrden from '../FormularioOrden/FormularioOrden'
 import {getFireStore} from  '../../data/firebaseService'
-import firebase from "firebase";
+import firebase from "firebase/app";
 import 'firebase/firestore'
+import './Cart.css'
 
 function Cart() {
 
@@ -19,9 +19,9 @@ function Cart() {
 
   const handleFinalize = () =>{
     setShowForm(true)
-}
+  }
 
-const createOrder = (buyer) =>{
+  const createOrder = (buyer) =>{
     const db = getFireStore()
     const orders = db.collection('order')
      
@@ -36,27 +36,11 @@ const createOrder = (buyer) =>{
           setOrderId(id)
           setConfirmation(true)
       }
-    ).catch((e) => {console.log(e)})
-
-    const Itemscollection = db.collection("ItemCollection")
-    const batch = getFireStore().batch()
-
-    product.forEach( p => {
-      batch.update(Itemscollection.doc(p.id),{stock:p.stock - p.quantity})
-    })
-    batch.commit()
-    .then(()=>{
-        console.log("Termino bien")
-        clearCart()
-    })
-    .catch(err=>console.log(err))
-    
+    ).catch((e) => {console.log(e)})    
 }
 
 console.log("Confirmacion",confirmation)
 console.log("orderId",orderId)
-
-
 
   useEffect(() => {
     setLoading(true);
@@ -71,7 +55,7 @@ console.log("orderId",orderId)
         <Container>
           {loading && <Loading/>}
           <div className="card">
-          {!loading && product.length !== 0 && (
+          {!loading && product.length !== 0  && orderId === "" && (
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
@@ -127,13 +111,21 @@ console.log("orderId",orderId)
             </Table>
           )}
 
-          {!loading && product.length !== 0 && (
+          {!loading && product.length !== 0  && orderId === "" && (
             <div>
               <small className="text-muted aca">
                 Precio Total $ {precioTotal()}
               </small>
-                <h3>Su Orden No. <span className="validation">{orderId}</span> ha sido confirmada</h3>
-                
+            </div>
+          )}
+
+            {!loading && orderId
+              ? <h3>Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.</h3> 
+              : <span></span>
+            }
+
+          {!loading && product.length !== 0 && orderId === "" &&(
+            <div>
                 {showForm ? 
                   <FormularioOrden createOrder={createOrder}/> 
                 : 
