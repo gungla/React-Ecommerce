@@ -35,6 +35,7 @@ function Cart() {
     orders.add(newOrder).then(({id}) => {
           setOrderId(id)
           setConfirmation(true)
+          clearCart()
       }
     ).catch((e) => {console.log(e)})    
 }
@@ -134,7 +135,7 @@ console.log("orderId",orderId)
             </div>
           )}
 
-          {!loading && product.length === 0 && (
+          {!loading && product.length === 0 && orderId === "" && (
             <div>
                 <h1 className="alinear">No hay productos en el carrito</h1>
                 <Link className="boton" to="/">
