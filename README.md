@@ -42,6 +42,8 @@ para correr el proyecto, que estará disponible en http://localhost:3000
 
 Uso de Bootstrap para dar formato a la aplicación.
 
+Uso de Toast para notificaciones de la aplicación.
+
 Uso de React Router Dom para la navegación.
 
 Uso de Firestore para la base de datos.

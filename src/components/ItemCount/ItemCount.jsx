@@ -1,12 +1,13 @@
 import React, {useState} from "react"
 import { Link } from 'react-router-dom'
 import './ItemCount.css'
+import toast, { Toaster } from "react-hot-toast";
 
 
 function ItemCount(props) {
 
     const {stock, initial, onAdd} = props;
-    const [count, setCount] = useState(initial)
+    const [count, setCount] = useState(initial);
 
     const addItem = () => { 
         if(count < stock){
@@ -25,6 +26,7 @@ function ItemCount(props) {
     const handleAdd = () => { 
         onAdd(count)
         setPulsado(true)
+        toast.success("Se añadio el producto al carrito!")
     }
     
     const Componente1 = () => (
@@ -33,21 +35,21 @@ function ItemCount(props) {
 
     return (
         <div>
+            <Toaster/>
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12">
-
                         <div className="button-container">
                             <button className="cart-qty-minus" onClick={removeItem} disabled={count === initial}>-</button>
                                 <span className="qty form-control">{count}</span>
                             <button className="cart-qty-plus" onClick={addItem} disabled={count === stock}>+</button>
                         </div>
+                        <small>Stock disnpoible: {stock - count}</small>
                         {pulsado ? (
                             <Link className="boton" to="/cart">Terminar compra</Link>
                         ) : (
                             <Componente1 />
                         )}
-                        Stock disnpoible: {stock - count}
                     </div>
                 </div>
             </div>

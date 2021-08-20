@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Col, Table } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
 import {useCartContext} from '../../Context/CartContext'
@@ -40,8 +40,8 @@ function Cart() {
     ).catch((e) => {console.log(e)})    
 }
 
-console.log("Confirmacion",confirmation)
-console.log("orderId",orderId)
+//console.log("Confirmacion",confirmation)
+//console.log("orderId",orderId)
 
   useEffect(() => {
     setLoading(true);
@@ -54,86 +54,91 @@ console.log("orderId",orderId)
     <div>
       <Col>
         <Container>
-          {loading && <Loading/>}
-          <div className="card">
+          {loading && <Loading/>}  
+          <div>
           {!loading && product.length !== 0  && orderId === "" && (
-            <Table striped bordered hover size="sm">
+          <div className="container">
+            {showForm ? 
+            <div className="cardq">
+              <FormularioOrden createOrder={createOrder}/> 
+            </div>
+            : 
+            <div>
+            <h4 className="titSeccion">Detalle del carrito</h4>
+            <table className="table table-hover table-condensed">
               <thead>
-                <tr>
-                  <th>Detalle del carrito</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th>
-                    <button className="btn btn-danger" onClick={clearCart}>
-                      Limpiar carrito
-                    </button>
-                  </th>
-                </tr>
-              </thead>
-              <thead>
-                <tr>
-                  <th>Borrar</th>
-                  <th>Imagen</th>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                </tr>
-              </thead>
-              {product.map((item) => (
-                <tbody key={item.item.id}> 
-                  <tr>
-                    <td>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => deleteFromCart(item)}
-                      >
-                        X
-                      </button>
-                    </td>
-                    <td>
+              <tr>
+                <th>
+                  Producto
+                  <span className="notShow">
+                    {confirmation}
+                    {orderId}
+                  </span>
+                </th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th className="text-center">Subtotal</th>
+                <th>
+                  <button className="btn btn-primary" onClick={clearCart}>
+                    Limpiar carrito
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            {product.map((item) => (
+            <tbody key={item.item.id}>
+              <tr>
+                <td data-th="Product">
+                  <div className="row">
+                    <div className="col-sm-2 hidden-xs">
                       <img
-                        variant="top"
                         src={item.item.pictureURL}
                         alt={item.item.title}
-                        className="imgCart"
+                        className="img-responsive"
                       />
-                    </td>
-                    <td>{item.item.title}</td>
-                    <td>
-                      {item.quantity}
-                    </td>
-                    <td>
-                      $ {item.quantity * item.item.price}
-                    </td>
-                  </tr>
-                </tbody>
-              ))}
-            </Table>
+                    </div>
+                    <div className="col-sm-10">
+                      <h4 className="moveLeft1">{item.item.title}</h4>
+                      <p className="moveLeft">{item.item.description}</p>
+                    </div>
+                  </div>
+                </td>
+                <td data-th="Price">
+                $ {item.item.price}
+                </td>
+                <td data-th="Quantity">
+                  {item.quantity}
+                </td>
+                <td data-th="Subtotal" className="text-center">$
+                $ {item.quantity * item.item.price}
+                </td>
+                <td className="actions" data-th="">
+                  <button onClick={() => deleteFromCart(item)} className="btn btn-danger btn-sm">
+                    Eliminar producto  
+                  </button>								
+                </td>
+              </tr>
+            </tbody>
+            ))}
+            <tfoot>
+              <tr>
+                <td><Link to="/" className="btn btn-info">Continuar comprando</Link></td>
+                <td colSpan="2" className="hidden-xs"></td>
+                <td className="hidden-xs text-center"><strong>Total $ {precioTotal()}</strong></td>
+                <td><button onClick={handleFinalize} className="btn btn-success btn-block">Checkout</button></td>
+              </tr>
+            </tfoot>
+          </table>
+          </div>
+          }
+       </div>
           )}
 
-          {!loading && product.length !== 0  && orderId === "" && (
-            <div>
-              <small className="text-muted aca">
-                Precio Total $ {precioTotal()}
-              </small>
-            </div>
-          )}
-
-            {!loading && orderId
-              ? <h3>Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.</h3> 
-              : <span></span>
-            }
-
-          {!loading && product.length !== 0 && orderId === "" &&(
-            <div>
-                {showForm ? 
-                  <FormularioOrden createOrder={createOrder}/> 
-                : 
-                  <button className ="boton" onClick={handleFinalize}>Finalizar compra</button>
-                }
-            </div>
-          )}
+          <div className="card">
+          {!loading && orderId
+            ? <h3>Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.</h3> 
+            : <span></span>
+          }
 
           {!loading && product.length === 0 && orderId === "" && (
             <div>
@@ -143,6 +148,7 @@ console.log("orderId",orderId)
                 </Link>
             </div>
           )}
+          </div>
           </div>
         </Container>
       </Col>

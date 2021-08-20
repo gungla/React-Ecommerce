@@ -9,6 +9,7 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import {CartContextProvider} from './Context/CartContext';
+import NotFound from './components/404/NotFound'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                 <ItemListContainer greeting="Catálogo de Produtos"/>
               </Route>
               <Route exact path='/item/:id' component={ItemDetailContainer}/>
+              <Route component={NotFound} />
             </Switch>
             <Footer/>
         </div>

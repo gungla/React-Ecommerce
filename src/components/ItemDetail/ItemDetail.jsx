@@ -5,13 +5,16 @@ import './ItemDetail.css'
 
 function ItemDetail({ items, addProduct }) {
 
+  const stock = items.stock
+  const initial = 1
   const [count, setCount] = useState();
 
   function onAdd(itemCount) {
     setCount(itemCount);
     addProduct(items, itemCount)
   }
-  console.log(count);
+
+  //console.log(count);
 
   return (
     <div>
@@ -33,7 +36,8 @@ function ItemDetail({ items, addProduct }) {
                 <Col xs={12} md={8}>
                   <Card.Body>
                     <Card.Title>
-                      {items.title}
+                      {items.title} 
+                      <span className="notshow">{count}</span>
                     </Card.Title>
                     <Card.Text className="espacios">
                       {items.description}
@@ -41,7 +45,7 @@ function ItemDetail({ items, addProduct }) {
                     <Card.Footer>
                       <small className="text-muted"> $ {items.price}</small>
                     </Card.Footer>
-                    <ItemCount onAdd={onAdd} stock={5} initial={1} />
+                    <ItemCount onAdd={onAdd} stock={stock} initial={initial} />
                   </Card.Body>
                 </Col>
               </Row>
