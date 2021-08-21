@@ -4,7 +4,7 @@ import './Loading.css'
 
 export const Loading = () => {
     return (
-        <center className="load">
+        <center className="load overlay">
             <Spinner animation="grow" />
         </center>
     )

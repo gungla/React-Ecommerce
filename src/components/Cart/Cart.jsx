@@ -138,7 +138,7 @@ function Cart() {
                   <div className="row">
                       <div className="col-sm text-center">
                           <h1>
-                              Sus datos de la compra
+                              Sus datos de compra
                           </h1> 
                           <p>
                             Su orden número <strong>{orderId}</strong> ha sido confirmada.
