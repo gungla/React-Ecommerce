@@ -24,6 +24,15 @@ function ItemDetail({ items, addProduct }) {
       
         <Col className="spacing" key={items.id}>
           <Container>
+          {!!items.stock ? (
+                <div className="stockOn">
+                    Stock on
+                </div>
+            ) : (
+                <div className="stockOff">
+                    Stock off
+                </div>
+            )}
             <Card className="card">
               <Row>
                 <Col xs={12} md={4}>
@@ -36,7 +45,7 @@ function ItemDetail({ items, addProduct }) {
                 <Col xs={12} md={8}>
                   <Card.Body>
                     <Card.Title>
-                      {items.title} 
+                      {items.title}   
                       <span className="notshow">{count}</span>
                     </Card.Title>
                     <Card.Text className="espacios">

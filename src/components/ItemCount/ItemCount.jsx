@@ -30,7 +30,7 @@ function ItemCount(props) {
     }
     
     const Componente1 = () => (
-        <button className="boton" onClick={handleAdd}>Añadir al carrito</button>
+        <button className="btn btn-primary w-100" onClick={handleAdd}>Añadir al carrito</button>
     );
 
     return (
@@ -39,17 +39,35 @@ function ItemCount(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12">
-                        <div className="button-container">
-                            <button className="cart-qty-minus" onClick={removeItem} disabled={count === initial}>-</button>
-                                <span className="qty form-control">{count}</span>
-                            <button className="cart-qty-plus" onClick={addItem} disabled={count === stock}>+</button>
+                        {!!stock ? (
+                        <div>
+                            <div>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-sm">
+                                        <div className="button-container">
+                                            <button className="cart-qty-minus" onClick={removeItem} disabled={count === initial}>-</button>
+                                                <span className="qty form-control">{count}</span>
+                                            <button className="cart-qty-plus" onClick={addItem} disabled={count === stock}>+</button>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm">                     
+                                    {pulsado ? (
+                                        <Link className="btn btn-danger w-100" to="/cart">Terminar compra</Link>
+                                    ) : (
+                                        <Componente1 />
+                                    )} 
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <small>Stock disnpoible: {stock - count}</small>
-                        {pulsado ? (
-                            <Link className="boton" to="/cart">Terminar compra</Link>
                         ) : (
-                            <Componente1 />
+                            <div>
+                                <Link className="boton" to="/">Continuar Comprando</Link>
+                            </div>
                         )}
+                        
                     </div>
                 </div>
             </div>

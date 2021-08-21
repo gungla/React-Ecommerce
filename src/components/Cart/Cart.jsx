@@ -41,7 +41,7 @@ function Cart() {
 }
 
 //console.log("Confirmacion",confirmation)
-//console.log("orderId",orderId)
+//console.log("orderId",orderId) 
 
   useEffect(() => {
     setLoading(true);
@@ -136,16 +136,22 @@ function Cart() {
 
           <div className="card">
           {!loading && orderId
-            ? <h3>Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.</h3> 
+            ? <div>
+                <h3>
+                  Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.
+                </h3> 
+              </div>
             : <span></span>
           }
 
           {!loading && product.length === 0 && orderId === "" && (
             <div>
-                <h1 className="alinear">No hay productos en el carrito</h1>
-                <Link className="boton" to="/">
-                  Continuar comprando
-                </Link>
+                <h1 className="alinear mt-4">No hay productos en el carrito</h1>
+                <div className="text-center"> 
+                  <Link className="alinear btn btn btn-primary mt-2 mb-4" to="/">
+                    Continuar comprando
+                  </Link>
+                </div>
             </div>
           )}
           </div>

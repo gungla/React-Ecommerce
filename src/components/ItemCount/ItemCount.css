@@ -22,3 +22,21 @@
 	background-color: #5161ce;
 	color: #fff;
 }
+
+.stockOn{
+	background: green;
+	padding: 4px;
+	color: #fff;
+	position: absolute;
+	z-index: 99;
+	font-weight: 900;
+}
+
+.stockOff{
+	background: red;
+	padding: 4px;
+	color: #fff;
+	position: absolute;
+	z-index: 99;
+	font-weight: 900;
+}
