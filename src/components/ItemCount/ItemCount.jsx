@@ -31,6 +31,7 @@ function ItemCount(props) {
     
     const Componente1 = () => (
         <button className="btn btn-primary w-100" onClick={handleAdd}>Añadir al carrito</button>
+        
     );
 
     return (

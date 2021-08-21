@@ -40,9 +40,6 @@ function Cart() {
     ).catch((e) => {console.log(e)})    
 }
 
-//console.log("Confirmacion",confirmation)
-//console.log("orderId",orderId) 
-
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -136,11 +133,20 @@ function Cart() {
 
           <div className="card">
           {!loading && orderId
-            ? <div>
-                <h3>
-                  Orden NO.<span className="validation">{orderId}</span> ha sido confirmada.
-                </h3> 
-              </div>
+            ? 
+              <div className="container">
+                  <div className="row">
+                      <div className="col-sm text-center">
+                          <h1>
+                              Sus datos de la compra
+                          </h1> 
+                          <p>
+                            Su orden número <strong>{orderId}</strong> ha sido confirmada.
+                          </p>
+                          <br></br><br></br>
+                        </div>
+                    </div>
+                </div>
             : <span></span>
           }
 
