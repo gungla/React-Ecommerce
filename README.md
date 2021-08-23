@@ -14,7 +14,9 @@ SHOP es un e-commerce para la venta de championes.
 
 **Detalle de producto:** Vista con detalle del producto seleccionado y sus características.
 
-**Sección Cart:** Llama a la sección Cart, aún sin funcionalidad.
+**Sección Cart:** Llama a la sección Cart, donde el usuario puede ver el monto total, el monto unitario, borrar elementos del carrito, vaciar carrito y terminar compra obtiendo un número de orden.
+
+**Stock:** Implemento control de stock mediante firestore.
 
   
 ## Instalación
