@@ -100,10 +100,10 @@ function Cart() {
                     </div>
                   </div>
                 </td>
-                <td data-th="Price">
+                <td data-th="Price" className="text-center">
                 $ {item.item.price}
                 </td>
-                <td data-th="Quantity">
+                <td data-th="Quantity" className="text-center">
                   {item.quantity}
                 </td>
                 <td data-th="Subtotal" className="text-center">$
