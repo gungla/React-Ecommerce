@@ -25,13 +25,13 @@ function ItemDetail({ items, addProduct }) {
         <Col className="spacing" key={items.id}>
           <Container>
           {!!items.stock ? (
-                <div className="stockOn">
-                    Stock on
-                </div>
+              <div className="stockOn">
+                  Stock on
+              </div>
             ) : (
-                <div className="stockOff">
-                    Stock off
-                </div>
+              <div className="stockOff">
+                  Stock off
+              </div>
             )}
             <Card className="card">
               <Row>

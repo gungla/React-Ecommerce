@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
+import { Link } from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
 import { useParams  } from 'react-router-dom'
 import { Loading } from "../Loading/Loading";
@@ -12,6 +13,8 @@ function ItemDetailContainer() {
     const [items, setItemList] = useState([])      
     const {id} = useParams()
     const { addProduct } = useCartContext();
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         setLoading(true)
@@ -19,7 +22,13 @@ function ItemDetailContainer() {
         const getItem = db.collection("items").doc(id)
 
         getItem.get().then((querySnapshot) => {
-            setItemList({id:querySnapshot.id, ...querySnapshot.data()})
+            if (!querySnapshot.exists) {
+                setLoading(false)
+                setError(true)
+                setErrorMessage("Ups! Parece que el producto que buscas ya no existe.")
+            } else {
+                setItemList({id:querySnapshot.id, ...querySnapshot.data()})
+            }
         })
         .catch((e) => {console.log(e)})
         .finally(()=>{
@@ -34,8 +43,29 @@ function ItemDetailContainer() {
                 <Container>
                     <Row>
                         <Col>
-                            {loading && <Loading />}
-                            {!loading && <ItemDetail items={items} addProduct={addProduct} />}
+                        {loading && <Loading />}
+                        {error ?
+                        <div className="card">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-sm text-center">
+                                        <h3>
+                                            {errorMessage}
+                                        </h3> 
+                                        <p>
+                                            <Link className="alinear btn btn btn-primary mt-2 mb-4" to="/">
+                                                Continuar comprando
+                                            </Link>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        : 
+                            <div>
+                                {!loading && <ItemDetail items={items} addProduct={addProduct} />}
+                            </div>
+                        }
                         </Col>
                     </Row>
                 </Container>

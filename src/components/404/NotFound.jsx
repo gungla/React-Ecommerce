@@ -23,9 +23,11 @@ function NotFound() {
                     {!loading && (
                     <div className="card">  
                         <img className="not" src="https://cdn3.iconfinder.com/data/icons/network-and-communications-10/32/network_Error_lost_no_page_not_found-1024.png" alt="Página no encontrada"/>
-                        <Link className="boton" to="/">
-                            Vovler el sitio
-                        </Link>
+                        <p>
+                            <Link className="btn btn-primary" to="/">
+                                Vovler el sitio
+                            </Link>
+                        </p>
                     </div>
                     )}
                 </center> 

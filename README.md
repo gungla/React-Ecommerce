@@ -8,11 +8,11 @@ SHOP es un e-commerce para la venta de championes.
 
 **NavBar:** Navegabilidad del sitio con el icono del carrito de compras.
 
-**Catálogo de productos:** Lista todos los productos del sitio y sus características.
+**Catálogo de productos:** Lista todos los productos del sitio y permite ver el detalle de cada producto.
 
-**Filtro por categorías:** Tomando las categorías se generan filtros de productos.
+**Filtro por categorías:** Tomando las categorías se generan filtros de productos y se listan los que pertenecen a esa categoría.
 
-**Detalle de producto:** Vista con detalle del producto seleccionado y sus características.
+**Detalle de producto:** Vista con detalle del producto seleccionado, muestra sus características, si el producto no existe muestra un mensaje de error. Permite sleccionar la cantidad de productos a comprar, añadir al carrito y terminar compra.
 
 **Sección Cart:** Llama a la sección Cart, donde el usuario puede ver el monto total, el monto unitario, borrar elementos del carrito, vaciar carrito y terminar compra obtiendo un número de orden.
 
