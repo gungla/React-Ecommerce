@@ -1,5 +1,5 @@
 
-# Ecommerce React Gunther
+# Ecommerce React 
 
 SHOP es un e-commerce para la venta de championes.
 
